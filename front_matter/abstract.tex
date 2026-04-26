@@ -1,0 +1,48 @@
+\setcounter{page}{5}
+\begin{abstract}
+Η αυξανόμενη πολυπλοκότητα των δικτύων \en{5G} και των αναδυόμενων δικτύων \en{6G} δημιουργεί σημαντικές
+προκλήσεις στον τομέα της κυβερνοασφάλειας, ιδιαίτερα στην ανίχνευση κακόβουλων δραστηριοτήτων 
+μέσα σε μεγάλους όγκους καταγραφών δικτύου (\en{logs}). Η παρούσα διπλωματική εργασία διερευνά τη χρήση 
+Μεγάλων Γλωσσικών Μοντέλων (\en{Large Language Models} – \en{LLMs}) για την αυτοματοποιημένη ανάλυση καταγραφών 
+και την ταξινόμηση συμβάντων δικτύου σε καλοήθη και κακόβουλα. Για την αποδοτική και διατηρούσα την 
+ιδιωτικότητα εκπαίδευση σε κατανεμημένα περιβάλλοντα, υιοθετείται μια προσέγγιση ομόσπονδης 
+μάθησης (\en{Federated Learning}). Συγκεκριμένα, χρησιμοποιείται η τεχνική \en{Low-Rank Adaptation} (\en{LoRA}) 
+για την προσαρμογή (\en{fine-tuning}) των \en{LLMs}, μειώνοντας σημαντικά το υπολογιστικό και επικοινωνιακό κόστος 
+που απαιτείται από την πλήρη εκπαίδευση των μοντέλων. Η υλοποίηση πραγματοποιείται με τη χρήση του πλαισίου 
+ομόσπονδης μάθησης \en{Flower AI}, το οποίο συντονίζει τη συνεργατική εκπαίδευση μεταξύ πολλαπλών κόμβων χωρίς 
+την ανάγκη κεντρικής κοινοποίησης δεδομένων. Η προτεινόμενη προσέγγιση αξιολογεί την αποτελεσματικότητα της ομόσπονδης προσαρμογής 
+μοντέλων για την ανάλυση καταγραφών κυβερνοασφάλειας σε δίκτυα επόμενης γενιάς. Τα αποτελέσματα δείχνουν ότι ο συνδυασμός της 
+ομόσπονδης μάθησης με τεχνικές αποδοτικής προσαρμογής παραμέτρων μπορεί να βελτιώσει την ανίχνευση κακόβουλων 
+δραστηριοτήτων, διατηρώντας παράλληλα την επεκτασιμότητα και την ιδιωτικότητα των δεδομένων σε κατανεμημένα περιβάλλοντα \en{5G/6G}.
+
+   \begin{keywords}
+   Ομόσπονδη Μάθηση, Μεγάλα Γλωσσικά Μοντέλα, Προσαρμογή LoRA (\en{LoRA Fine-Tuning}), Ανάλυση Καταγραφών Δικτύου, Κυβερνοασφάλεια, Δίκτυα \en{5G/6G}, \en{Flower AI}
+   \end{keywords}
+\end{abstract}
+
+
+
+\begin{abstracteng}
+\tl{
+   The increasing complexity of 5G and emerging 6G networks introduces
+   significant cybersecurity challenges, particularly in the detection 
+   of malicious activities within large volumes of network logs. This thesis 
+   investigates the use of Large Language Models (LLMs) for automated log analysis 
+   and the classification of benign and malicious network events. To enable efficient
+   and privacy-preserving training across distributed environments, a federated learning 
+   approach is adopted. Specifically, Low-Rank Adaptation (LoRA) is used to fine-tune 
+   LLMs while significantly reducing the computational and communication overhead typically 
+   associated with full model training. The implementation is carried out using the Flower AI 
+   federated learning framework, which coordinates collaborative training among multiple clients 
+   without requiring centralized data sharing. The proposed approach evaluates the effectiveness 
+   of federated fine-tuning for cybersecurity log analysis in next-generation mobile networks. 
+   The results demonstrate that combining federated learning with parameter-efficient fine-tuning 
+   techniques can improve malicious activity detection while maintaining scalability and data privacy 
+   in distributed 5G/6G environments.
+   }
+
+   \begin{keywordseng}
+    \tl{Federated Learning, Large Language Models, LoRA Fine-Tuning, Network Log Analysis, Cybersecurity, 5G/6G Networks, Flower AI}
+   \end{keywordseng}
+
+\end{abstracteng}

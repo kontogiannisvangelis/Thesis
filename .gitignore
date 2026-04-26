@@ -1,0 +1,64 @@
+# LaTeX intermediate files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.toc
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.loi
+
+# latexmk
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.synctex(busy)
+
+# build tools
+*.run.xml
+
+# minted / pygments
+_minted*
+*.pyg
+
+# tikz externalization
+*.dpth
+*.md5
+
+# bibliography tools
+*.nav
+*.snm
+*.vrb
+
+# PDF output (optional — keep if you want to version PDFs)
+*.pdf
+
+# temporary files
+*.tmp
+*.bak
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+
+# latex build directories
+build/
+out/
+dist/
