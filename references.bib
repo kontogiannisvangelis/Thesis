@@ -211,6 +211,16 @@
   year={2009}
 }
 
+@inproceedings{zhu2023loghub,
+  title={Loghub: A Large Collection of System Log Datasets for AI-driven Log Analytics},
+  author={Zhu, Jieming and He, Shilin and He, Pinjia and Liu, Jinyang and Lyu, Michael R.},
+  booktitle={2023 IEEE 34th International Symposium on Software Reliability Engineering (ISSRE)},
+  pages={355--366},
+  year={2023},
+  organization={IEEE},
+  doi={10.1109/ISSRE59848.2023.00071}
+}
+
 @article{garcia2014anomaly,
   title={Anomaly-based network intrusion detection: Techniques, systems and challenges},
   author={Garcia-Teodoro, Pedro and Diaz-Verdejo, Jesus and Macia-Fernandez, Gabriel and Vazquez, Enrique},
@@ -380,4 +390,117 @@
   author={Beutel, Daniel J and others},
   journal={arXiv preprint arXiv:2007.14390},
   year={2020}
+}
+
+@article{cao2024parameter,
+  title={Parameter-Efficient Log Anomaly Detection based on Pre-trained Models and LoRA},
+  author={Cao, Jiale and Li, Yudong and Zhang, Wenjie and Xu, Meng},
+  booktitle={2024 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)},
+  year={2024},
+  organization={IEEE},
+  doi={10.1109/SANER60148.2024.00000},
+  url={https://ieeexplore.ieee.org/document/10479068}
+}
+
+@article{lim2025adapting,
+  title={Adapting Large Language Models for Parameter-Efficient Log Anomaly Detection},
+  author={Lim, Ying Fu and Zhu, Jiawen and Pang, Guansong},
+  journal={arXiv preprint arXiv:2503.08045},
+  year={2025},
+  url={https://arxiv.org/abs/2503.08045}
+}
+
+@article{ocansey2025logtinyllm,
+  title={LogTinyLLM: Tiny Large Language Models Based Contextual Log Anomaly Detection},
+  author={Ocansey, Isaiah Thompson and Bhattacharya, Ritwik and Sen, Tanmay},
+  journal={arXiv preprint arXiv:2507.11071},
+  year={2025},
+  doi={10.48550/arXiv.2507.11071},
+  url={https://arxiv.org/abs/2507.11071}
+}
+
+@article{ZHANG2025114064,
+title = {LLM-LADE: Large language model-based log anomaly detection with explanation},
+journal = {Knowledge-Based Systems},
+volume = {326},
+pages = {114064},
+year = {2025},
+issn = {0950-7051},
+doi = {https://doi.org/10.1016/j.knosys.2025.114064},
+url = {https://www.sciencedirect.com/science/article/pii/S0950705125011098},
+author = {Zhiwei Zhang and Saifei Li and Lijie Zhang and Jianbin Ye and Chunduo Hu and Lianshan Yan},
+keywords = {Log anomaly detection, Log analysis, Large language model, Fine-tuning, Online optimization},
+abstract = {The increasing complexity of software systems and the exponential growth of log data have made anomaly detection and fault localization from massive logs a critical research area. However, existing log anomaly detection methods struggle to capture context-dependent semantic relationships present in unstructured logs and lack explainable decision-making mechanisms, substantially restricting their applicability in complex systems. The present study proposes LLM-LADE, a novel large language model (LLM)-based framework for log anomaly detection and explanation. LLM-LADE introduces a three-stage coordinated architecture encompassing ‘data augmentation - parameter-efficient fine-tuning (PEFT) - online optimization’, representing the first implementation of LLMs for simultaneous anomaly discrimination and explanation generation in log sequences. The framework overcomes the interpretability limitations of conventional approaches through a joint learning objective of label-cause pairs. An incrementally matched knowledge base mechanism is designed to enable zero-parameter-update online optimization via real-time capture of misjudged samples, ensuring continuous adaptability to dynamic logging environments. Experimental results on three benchmark datasets demonstrate that LLM-LADE outperforms current state-of-the-art algorithms in detection performance, with explanations generated exhibiting professional-grade usability in terms of both informativeness and readability.}
+}
+
+@article{ocansey2025dpflogtinyllm,
+  title={DP-FLogTinyLLM: Differentially Private Federated Log Anomaly Detection Using Tiny LLMs},
+  author={Ocansey, Isaiah Thompson and Bhattacharya, Ritwik and Sen, Tanmay},
+  journal={arXiv preprint arXiv:2508.05337},
+  year={2025},
+  doi={10.48550/arXiv.2508.05337},
+  url={https://arxiv.org/abs/2508.05337}
+}
+
+@article{zhang2023fedpetuning,
+  title={FedPETuning: When Federated Learning Meets the Parameter-Efficient Tuning Methods of Pre-trained Language Models},
+  author={Zhang, Zhuo and Yang, Yuanhang and Dai, Yong and Wang, Qifan and Yu, Yue and Qu, Lizhen and Xu, Zenglin},
+  booktitle={Findings of the Association for Computational Linguistics: ACL 2023},
+  pages={9963--9977},
+  year={2023},
+  organization={Association for Computational Linguistics},
+  doi={10.18653/v1/2023.findings-acl.632},
+  url={https://aclanthology.org/2023.findings-acl.632/}
+}
+
+@inproceedings{fedbiot,
+author = {Wu, Feijie and Li, Zitao and Li, Yaliang and Ding, Bolin and Gao, Jing},
+title = {FedBiOT: LLM Local Fine-tuning in Federated Learning without Full Model},
+year = {2024},
+isbn = {9798400704901},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3637528.3671897},
+doi = {10.1145/3637528.3671897},
+abstract = {Large language models (LLMs) show amazing performance on many domain-specific tasks after fine-tuning with some appropriate data. However, many domain-specific data are privately distributed across multiple owners. Thus, this dilemma raises the interest in how to perform LLM fine-tuning in federated learning (FL). However, confronted with limited computation and communication capacities, FL clients struggle to fine-tune an LLM effectively. To this end, we introduce FedBiOT, a resource-efficient LLM fine-tuning approach to FL. Specifically, our method involves the server generating a compressed LLM and aligning its performance with the full model. Subsequently, the clients fine-tune a lightweight yet important part of the compressed model, referred to as an adapter. Notice that as the server has no access to the private data owned by the clients, the data used for alignment by the server has a different distribution from the one used for fine-tuning by clients. We formulate the problem into a bi-level optimization problem to minimize the negative effect of data discrepancy and derive the updating rules for the server and clients. We conduct extensive experiments on LLaMA-2, empirically showing that the adapter has exceptional performance when reintegrated into the global LLM. The results also indicate that the proposed FedBiOT significantly reduces resource consumption compared to existing benchmarks, all while achieving comparable performance levels.},
+booktitle = {Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining},
+pages = {3345–3355},
+numpages = {11},
+keywords = {federated learning, large language models},
+location = {Barcelona, Spain},
+series = {KDD '24}
+}
+
+@article{feditd,
+author = {Wang, Zhi and Wang, Haopeng and El Saddik, Abdulmotaleb},
+year = {2024},
+month = {01},
+pages = {1-1},
+title = {FedITD: A Federated Parameter-Efficient Tuning With Pre-Trained Large Language Models and Transfer Learning Framework for Insider Threat Detection},
+volume = {PP},
+journal = {IEEE Access},
+doi = {10.1109/ACCESS.2024.3482988}
+}
+
+@article{qi2024fdlora,
+  title={FDLoRA: Personalized Federated Learning of Large Language Model via Dual LoRA Tuning},
+  author={Qi, Jiaxing and Luan, Zhongzhi and Huang, Shaohan and Fung, Carol J. and Yang, Hailong and Qian, Depei},
+  journal={arXiv preprint arXiv:2406.07925},
+  year={2024},
+  doi={10.48550/arXiv.2406.07925},
+  url={https://arxiv.org/abs/2406.07925}
+}
+
+@article{REZAEI2025111473,
+title = {FedLLMGuard: A federated large language model for anomaly detection in 5G networks},
+journal = {Computer Networks},
+volume = {269},
+pages = {111473},
+year = {2025},
+issn = {1389-1286},
+doi = {https://doi.org/10.1016/j.comnet.2025.111473},
+url = {https://www.sciencedirect.com/science/article/pii/S1389128625004402},
+author = {Hadiseh Rezaei and Rahim Taheri and Mohammad Shojafar},
+keywords = {5G networks, Federated learning, Large language models, Network traffic anomalies, Privacy},
+abstract = {The rise of 5G networks has introduced new security challenges, particularly in detecting and mitigating dynamic traffic anomalies, adversarial threats, and large-scale cyberattacks. Traditional Machine learning-based Intrusion Detection Systems (IDS) suffer from high latency, poor adaptability, and privacy risks due to centralized data aggregation. To address these issues, we propose FedLLMGuard as a novel framework integrating Federated Learning (FL) with Large Language Models (LLM) for real-time privacy-preserving and adaptive anomaly detection in 5G networks. Our method uses FL for decentralized learning while utilizing LLM for contextual traffic analysis and interoperability. Moreover, our framework introduces the CorruptNet adversarial attack, a novel poisoning strategy targeting FL-based anomaly detection, ensuring robustness evaluation under adversarial conditions. We evaluate our model against three methods – Random Forest, LSTM, and PSO Autoencoder LSTM – using three benchmark datasets: TII-SSRC-23, CICDDoS2019, and NF-UNSW-NB15. Experimental results demonstrate that FedLLMGuard outperformed all models, whether subjected to the CorruptNet adversarial attack or not. Under the CorruptNet attack, it achieves an accuracy of 98.64%, a false positive rate of only 2.16%, and ultra-low detection latency (0.0113s). These results underscore FedLLMGuard’s capacity to detect threats rapidly, mitigate attacks effectively, and sustain high accuracy while ensuring data privacy, making it a scalable and resource-efficient security solution for 5G networks.}
 }
