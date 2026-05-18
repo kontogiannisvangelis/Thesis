@@ -1,0 +1,63 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="0O_TPNluvkY9MdtlWNkq">
+    <mxGraphModel dx="2054" dy="1139" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="XdoQ4t45pxNeWldMBUlQ-11" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;align=left;strokeColor=default;strokeWidth=1;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Grouped Logs&lt;/h1&gt;&lt;div&gt;1. BLOCK* NameSystem.allocateBlock:&amp;lt;*&amp;gt;, Receiving block &amp;lt;*&amp;gt; src: /&amp;lt;*&amp;gt; dest: /&amp;lt;*&amp;gt;, Receiving block &amp;lt;*&amp;gt; src: /&amp;lt;*&amp;gt; dest: /&amp;lt;*&amp;gt;, Receiving block &amp;lt;*&amp;gt; src: /&amp;lt;*&amp;gt; dest: /&amp;lt;*&amp;gt;, BLOCK* NameSystem.addStoredBlock: blockMap updated: &amp;lt;*&amp;gt; is added to &amp;lt;*&amp;gt; size &amp;lt;*&amp;gt;, BLOCK* NameSystem.addStoredBlock: blockMap updated: &amp;lt;*&amp;gt; is added to &amp;lt;*&amp;gt; size &amp;lt;*&amp;gt;, PacketResponder &amp;lt;*&amp;gt; for block &amp;lt;*&amp;gt; terminating, Received block &amp;lt;*&amp;gt; of size &amp;lt;*&amp;gt; from /&amp;lt;*&amp;gt;, PacketResponder &amp;lt;*&amp;gt; for block &amp;lt;*&amp;gt; terminating, Received block &amp;lt;*&amp;gt; of size &amp;lt;*&amp;gt; from /&amp;lt;*&amp;gt;, BLOCK* NameSystem.addStoredBlock: blockMap updated: &amp;lt;*&amp;gt; is added to &amp;lt;*&amp;gt; size &amp;lt;*&amp;gt;, PacketResponder &amp;lt;*&amp;gt; for block &amp;lt;*&amp;gt; terminating, Received block &amp;lt;*&amp;gt; of size &amp;lt;*&amp;gt; from /&amp;lt;*&amp;gt; 0&amp;nbsp;&lt;br&gt;2. BLOCK* NameSystem.allocateBlock:&amp;lt;*&amp;gt;, Receiving block &amp;lt;*&amp;gt; src: /&amp;lt;*&amp;gt; dest: /&amp;lt;*&amp;gt;, Receiving block &amp;lt;*&amp;gt; src: /&amp;lt;*&amp;gt; dest: /&amp;lt;*&amp;gt;, Receiving block &amp;lt;*&amp;gt; src: /&amp;lt;*&amp;gt; dest: /&amp;lt;*&amp;gt;, BLOCK* NameSystem.addStoredBlock: blockMap updated: &amp;lt;*&amp;gt; is added to &amp;lt;*&amp;gt; size &amp;lt;*&amp;gt;, BLOCK* NameSystem.addStoredBlock: blockMap updated: &amp;lt;*&amp;gt; is added to &amp;lt;*&amp;gt; size &amp;lt;*&amp;gt;, BLOCK* NameSystem.addStoredBlock: blockMap updated: &amp;lt;*&amp;gt; is added to &amp;lt;*&amp;gt; size &amp;lt;*&amp;gt;, PacketResponder &amp;lt;*&amp;gt; for block &amp;lt;*&amp;gt; terminating, Received block &amp;lt;*&amp;gt; of size &amp;lt;*&amp;gt; from /&amp;lt;*&amp;gt;, PacketResponder &amp;lt;*&amp;gt; for block &amp;lt;*&amp;gt; terminating, Received block &amp;lt;*&amp;gt; of size &amp;lt;*&amp;gt; from /&amp;lt;*&amp;gt;, PacketResponder &amp;lt;*&amp;gt; for block &amp;lt;*&amp;gt; terminating, Received block &amp;lt;*&amp;gt; of size &amp;lt;*&amp;gt; from /&amp;lt;*&amp;gt; 0&lt;div&gt;...&lt;/div&gt;&lt;/div&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="270" width="640" x="40" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="XdoQ4t45pxNeWldMBUlQ-40" edge="1" parent="1" source="XdoQ4t45pxNeWldMBUlQ-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;curved=1;" target="XdoQ4t45pxNeWldMBUlQ-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XdoQ4t45pxNeWldMBUlQ-20" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=default;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Group Logs by Block Id" vertex="1">
+          <mxGeometry height="30" width="150" x="550" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="XdoQ4t45pxNeWldMBUlQ-9" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;strokeColor=default;strokeWidth=1;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Raw Logs&lt;/h1&gt;1. Receiving block blk_-1608999687919862906 src: /10.250.19.102:54106 dest: /10.250.19.102:50010&lt;br&gt;2. BLOCK* NameSystem.allocateBlock: /mnt/hadoop/mapred/system/job_200811092030_0001/job.jar. blk_-1608999687919862906&lt;br&gt;3. Receiving block blk_-1608999687919862906 src: /10.250.10.6:40524 dest: /10.250.10.6:50010&lt;br&gt;4. Receiving block blk_-1608999687919862906 src: /10.250.14.224:42420 dest: /10.250.14.224:50010&lt;br&gt;5. PacketResponder 1 for block blk_-1608999687919862906 terminating&lt;br&gt;6. PacketResponder 2 for block blk_-1608999687919862906 terminating&lt;br&gt;7. Received block blk_-1608999687919862906 of size 91178 from /10.250.10.6&lt;br&gt;8. Received block blk_-1608999687919862906 of size 91178 from /10.250.19.102&lt;br&gt;9. PacketResponder 0 for block blk_-1608999687919862906 terminating&lt;br&gt;&lt;div&gt;10. Received block blk_-1608999687919862906 of size 91178 from /10.250.14.224&lt;/div&gt;&lt;div&gt;...&lt;/div&gt;" vertex="1">
+          <mxGeometry height="230" width="560" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="XdoQ4t45pxNeWldMBUlQ-13" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;strokeColor=default;strokeWidth=1;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Log Events&lt;/h1&gt;&lt;p&gt;1. Receiving block &amp;lt;*&amp;gt; src: /&amp;lt;*&amp;gt; dest: /&amp;lt;*&amp;gt;&lt;br&gt;2. BLOCK* NameSystem.allocateBlock:&amp;lt;*&amp;gt;&lt;br&gt;3. Receiving block &amp;lt;*&amp;gt; src: /&amp;lt;*&amp;gt; dest: /&amp;lt;*&amp;gt;&lt;br&gt;4. Receiving block &amp;lt;*&amp;gt; src: /&amp;lt;*&amp;gt; dest: /&amp;lt;*&amp;gt;&lt;br&gt;5. PacketResponder &amp;lt;*&amp;gt; for block &amp;lt;*&amp;gt; terminating&lt;br&gt;6. PacketResponder &amp;lt;*&amp;gt; for block &amp;lt;*&amp;gt; terminating&lt;br&gt;7. Received block &amp;lt;*&amp;gt; of size &amp;lt;*&amp;gt; from /&amp;lt;*&amp;gt;&lt;br&gt;8. Received block &amp;lt;*&amp;gt; of size &amp;lt;*&amp;gt; from /&amp;lt;*&amp;gt;&lt;br&gt;9. PacketResponder &amp;lt;*&amp;gt; for block &amp;lt;*&amp;gt; terminating&lt;br&gt;&lt;/p&gt;&lt;div&gt;10. Received block &amp;lt;*&amp;gt; of size &amp;lt;*&amp;gt; from /&amp;lt;*&amp;gt;&lt;/div&gt;...&lt;p&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="250" width="280" x="730" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="XdoQ4t45pxNeWldMBUlQ-18" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=default;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Parse Logs" vertex="1">
+          <mxGeometry height="30" width="70" x="630" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="XdoQ4t45pxNeWldMBUlQ-35" edge="1" parent="1" source="XdoQ4t45pxNeWldMBUlQ-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;curved=1;" target="XdoQ4t45pxNeWldMBUlQ-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XdoQ4t45pxNeWldMBUlQ-22" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=default;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Tokenization" vertex="1">
+          <mxGeometry height="30" width="90" x="720" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="XdoQ4t45pxNeWldMBUlQ-14" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;strokeColor=default;strokeWidth=1;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Tokenized Dataset&lt;/h1&gt;&lt;div align=&quot;left&quot;&gt;1. label: 0 | input_ids: tensor([101,...]) | attention_mask: tensor([1,...])&amp;nbsp;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;2. label: 1 | input_ids: tensor([101,...]) | attention_mask: tensor([1,...])&amp;nbsp;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;3. label: 0 | input_ids: tensor([101,...]) | attention_mask: tensor([1,...])&lt;/div&gt;&lt;div&gt;...&lt;/div&gt;&lt;p&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="120" width="370" x="710" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="XdoQ4t45pxNeWldMBUlQ-32" edge="1" parent="1" source="XdoQ4t45pxNeWldMBUlQ-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="XdoQ4t45pxNeWldMBUlQ-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XdoQ4t45pxNeWldMBUlQ-34" edge="1" parent="1" source="XdoQ4t45pxNeWldMBUlQ-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.686;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitPerimeter=0;" target="XdoQ4t45pxNeWldMBUlQ-22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="515" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XdoQ4t45pxNeWldMBUlQ-36" edge="1" parent="1" source="XdoQ4t45pxNeWldMBUlQ-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.153;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitPerimeter=0;" target="XdoQ4t45pxNeWldMBUlQ-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XdoQ4t45pxNeWldMBUlQ-37" edge="1" parent="1" source="XdoQ4t45pxNeWldMBUlQ-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.006;entryY=0.141;entryDx=0;entryDy=0;entryPerimeter=0;" target="XdoQ4t45pxNeWldMBUlQ-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XdoQ4t45pxNeWldMBUlQ-39" edge="1" parent="1" source="XdoQ4t45pxNeWldMBUlQ-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.071;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;curved=1;exitPerimeter=0;" target="XdoQ4t45pxNeWldMBUlQ-20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="305" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XdoQ4t45pxNeWldMBUlQ-41" parent="1" style="swimlane;startSize=0;" value="" vertex="1">
+          <mxGeometry height="590" width="1060" x="30" y="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
