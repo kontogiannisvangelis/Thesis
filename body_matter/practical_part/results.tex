@@ -113,3 +113,354 @@
 Συνολικά, η κεντρική εκπαίδευση οδηγεί σε ισχυρή επίδοση για την ανίχνευση ανωμαλιών στο \en{HDFS}. Η υψηλή τιμή \en{precision} δείχνει ότι οι περισσότερες ακολουθίες που χαρακτηρίζονται ως ανώμαλες είναι πράγματι ανωμαλίες, ενώ η υψηλή τιμή \en{recall} δείχνει ότι το μοντέλο εντοπίζει το μεγαλύτερο μέρος των πραγματικών ανωμαλιών. Επομένως, τα αποτελέσματα της κεντρικής εκπαίδευσης αποτελούν κατάλληλο άνω σημείο αναφοράς για τη σύγκριση με τα ομοσπονδιακά πειράματα.
 
 \section{Ομοσπονδιακή Εκπαίδευση}
+
+\subsection{Πειράματα με 2 \en{clients}}
+
+Στην πρώτη ομάδα ομοσπονδιακών πειραμάτων εξετάστηκε η περίπτωση των 2 \en{clients}. Τα δεδομένα εκπαίδευσης κατανεμήθηκαν με \en{Dirichlet partitioning} για δύο τιμές της παραμέτρου \(\alpha\): \(\alpha=0.8\), που αντιστοιχεί σε πιο ανομοιογενή κατανομή, και \(\alpha=100\), που προσεγγίζει περισσότερο την \en{IID} περίπτωση. Για κάθε κατανομή συγκρίθηκαν οι στρατηγικές συνάθροισης \en{FedAvg} και \en{FedAdam}. Οι βασικές ρυθμίσεις των πειραμάτων παρουσιάζονται στον Πίνακα~\ref{tab:fl_2clients_params}.
+
+\begin{table}[H]
+    \centering
+    \caption{Βασικές ρυθμίσεις για τα ομοσπονδιακά πειράματα με 2 \en{clients}.}
+    \label{tab:fl_2clients_params}
+    \begin{tabular}{|l|c|}
+        \hline
+        \textbf{Παράμετρος} & \textbf{Τιμή} \\
+        \hline
+        \en{Model} & \en{bert-base-uncased} \\
+        \hline
+        Πλήθος \en{clients} & \(2\) \\
+        \hline
+        Γύροι ομοσπονδιακής εκπαίδευσης & \(40\) \\
+        \hline
+        Τοπικές εποχές ανά γύρο & \(2\) \\
+        \hline
+        \en{Learning rate} & \(5\cdot10^{-4}\) \\
+        \hline
+        \en{Train batch size} & \(32\) \\
+        \hline
+        \en{Gradient accumulation steps} & \(2\) \\
+        \hline
+        \en{LoRA rank} & \(16\) \\
+        \hline
+        \en{LoRA alpha} & \(32\) \\
+        \hline
+        Μήκος ακολουθίας & \(512\) \\
+        \hline
+        \en{Threshold tuning} & Ναι \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Η πορεία των μετρικών στο σύνολο επικύρωσης φαίνεται στα Σχήματα~\ref{fig:fl_2clients_accuracy_f1} και~\ref{fig:fl_2clients_precision_recall}. Και στις τέσσερις εκτελέσεις η καλύτερη τιμή \en{F1-score} στο σύνολο επικύρωσης εμφανίστηκε στον 40ό γύρο. Τα τελικά αποτελέσματα επικύρωσης, πριν από τη ρύθμιση του κατωφλίου, παρουσιάζονται στον Πίνακα~\ref{tab:fl_2clients_eval_results}.
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{Μετρικές επικύρωσης στον 40ό γύρο για τα πειράματα με 2 \en{clients}.}
+    \label{tab:fl_2clients_eval_results}
+    \begin{tabular}{|l|c|c|c|c|c|c|}
+        \hline
+        \textbf{Στρατηγική} & \textbf{\(\alpha\)} & \textbf{\en{Loss}} & \textbf{\en{Accuracy}} & \textbf{\en{Precision}} & \textbf{\en{Recall}} & \textbf{\en{F1}} \\
+        \hline
+        \en{FedAdam} & \(0.8\) & 0.4829 & 0.8764 & 0.8242 & 0.8168 & 0.8204 \\
+        \hline
+        \en{FedAdam} & \(100\) & 0.4780 & 0.8710 & 0.8147 & 0.8142 & 0.8145 \\
+        \hline
+        \en{FedAvg} & \(0.8\) & 0.4585 & 0.8792 & 0.8296 & 0.8169 & 0.8229 \\
+        \hline
+        \en{FedAvg} & \(100\) & 0.4527 & 0.8781 & 0.8280 & 0.8153 & 0.8214 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \textbf{\en{Accuracy}}\\[0.1cm]
+        \includegraphics[width=\textwidth]{final_experiments/clients_2/plots/accuracy.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \textbf{\en{F1-score}}\\[0.1cm]
+        \includegraphics[width=\textwidth]{final_experiments/clients_2/plots/f1.png}
+    \end{minipage}
+    \caption{Εξέλιξη των \en{accuracy} και \en{F1-score} στο σύνολο επικύρωσης για τα πειράματα με 2 \en{clients}.}
+    \label{fig:fl_2clients_accuracy_f1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \textbf{\en{Precision}}\\[0.1cm]
+        \includegraphics[width=\textwidth]{final_experiments/clients_2/plots/precision.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \textbf{\en{Recall}}\\[0.1cm]
+        \includegraphics[width=\textwidth]{final_experiments/clients_2/plots/recall.png}
+    \end{minipage}
+    \caption{Εξέλιξη των \en{precision} και \en{recall} στο σύνολο επικύρωσης για τα πειράματα με 2 \en{clients}.}
+    \label{fig:fl_2clients_precision_recall}
+\end{figure}
+
+Μετά τον 40ό γύρο εφαρμόστηκε \en{threshold tuning} με στόχο την βελτιστοποίηση της μετρικής \en{Recall} στο σύνολο επικύρωσης και το επιλεγμένο κατώφλι χρησιμοποιήθηκε στο σύνολο ελέγχου. Τα τελικά αποτελέσματα ελέγχου παρουσιάζονται στον Πίνακα~\ref{tab:fl_2clients_test_results}. Η καλύτερη επίδοση στο σύνολο ελέγχου προέκυψε με \en{FedAvg} και \(\alpha=100\), με \en{accuracy} \(0.8765\) και \en{F1-score} \(0.8201\). Η συγκεκριμένη εκτέλεση διατηρεί επίσης την υψηλότερη τιμή \en{precision}, \(0.8245\), ενώ η μεγαλύτερη τιμή \en{recall}, \(0.8192\), παρατηρήθηκε με \en{FedAvg} και \(\alpha=0.8\).
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{Τελικές μετρικές στο σύνολο ελέγχου μετά από \en{threshold tuning} για τα πειράματα με 2 \en{clients}.}
+    \label{tab:fl_2clients_test_results}
+    \begin{tabular}{|l|c|c|c|c|c|c|}
+        \hline
+        \textbf{Στρατηγική} & \textbf{\(\alpha\)} & \textbf{\en{Threshold}} & \textbf{\en{Accuracy}} & \textbf{\en{Precision}} & \textbf{\en{Recall}} & \textbf{\en{F1}} \\
+        \hline
+        \en{FedAdam} & \(0.8\) & 0.500 & 0.8721 & 0.8181 & 0.8097 & 0.8138 \\
+        \hline
+        \en{FedAdam} & \(100\) & 0.505 & 0.8711 & 0.8160 & 0.8099 & 0.8129 \\
+        \hline
+        \en{FedAvg} & \(0.8\) & 0.465 & 0.8694 & 0.8108 & 0.8192 & 0.8148 \\
+        \hline
+        \en{FedAvg} & \(100\) & 0.490 & 0.8765 & 0.8245 & 0.8160 & 0.8201 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Συνολικά, για 2 \en{clients} οι διαφορές μεταξύ των τεσσάρων ρυθμίσεων είναι μικρές, με όλες τις τελικές τιμές \en{F1-score} στο σύνολο ελέγχου να βρίσκονται στο διάστημα \(0.8129\)--\(0.8201\). Η \en{FedAvg} εμφανίζει ελαφρώς καλύτερη συμπεριφορά από τη \en{FedAdam}, ιδιαίτερα στην πιο ομοιόμορφη κατανομή \(\alpha=100\). Σε σχέση με την κεντρική εκπαίδευση, η ομοσπονδιακή εκπαίδευση με 2 \en{clients} παρουσιάζει χαμηλότερη επίδοση, κάτι που αποτυπώνει το κόστος της τοπικής εκπαίδευσης και της συνάθροισης ενημερώσεων αντί για εκπαίδευση πάνω στο ενιαίο σύνολο δεδομένων.
+
+\subsection{Πειράματα με 4 \en{clients}}
+
+Στη δεύτερη ομάδα ομοσπονδιακών πειραμάτων εξετάστηκε η περίπτωση των 4 \en{clients}. Όπως και στην περίπτωση των 2 \en{clients}, χρησιμοποιήθηκαν δύο τιμές της παραμέτρου \(\alpha\) του \en{Dirichlet partitioning}, \(\alpha=0.8\) και \(\alpha=100\), και συγκρίθηκαν οι στρατηγικές \en{FedAvg} και \en{FedAdam}. Οι βασικές ρυθμίσεις των πειραμάτων παρουσιάζονται στον Πίνακα~\ref{tab:fl_4clients_params}.
+
+\begin{table}[H]
+    \centering
+    \caption{Βασικές ρυθμίσεις για τα ομοσπονδιακά πειράματα με 4 \en{clients}.}
+    \label{tab:fl_4clients_params}
+    \begin{tabular}{|l|c|}
+        \hline
+        \textbf{Παράμετρος} & \textbf{Τιμή} \\
+        \hline
+        \en{Model} & \en{bert-base-uncased} \\
+        \hline
+        Πλήθος \en{clients} & \(4\) \\
+        \hline
+        Γύροι ομοσπονδιακής εκπαίδευσης & \(100\) \\
+        \hline
+        Τοπικές εποχές ανά γύρο & \(2\) \\
+        \hline
+        \en{Learning rate} & \(5\cdot10^{-4}\) \\
+        \hline
+        \en{Train batch size} & \(32\) \\
+        \hline
+        \en{Gradient accumulation steps} & \(2\) \\
+        \hline
+        \en{LoRA rank} & \(16\) \\
+        \hline
+        \en{LoRA alpha} & \(32\) \\
+        \hline
+        Μήκος ακολουθίας & \(512\) \\
+        \hline
+        \en{Threshold tuning} & Ναι \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Η εξέλιξη των μετρικών στο σύνολο επικύρωσης παρουσιάζεται στα Σχήματα~\ref{fig:fl_4clients_accuracy_f1} και~\ref{fig:fl_4clients_precision_recall}. Σε αντίθεση με την περίπτωση των 2 \en{clients}, η καλύτερη τιμή \en{F1-score} στο σύνολο επικύρωσης δεν εμφανίζεται πάντα στον τελευταίο γύρο. Για αυτόν τον λόγο, στον Πίνακα~\ref{tab:fl_4clients_best_eval_results} παρουσιάζεται ο γύρος με το καλύτερο \en{F1-score} για κάθε ρύθμιση.
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{Καλύτερες μετρικές επικύρωσης για τα πειράματα με 4 \en{clients}.}
+    \label{tab:fl_4clients_best_eval_results}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Στρατηγική} & \textbf{\(\alpha\)} & \textbf{Γύρος} & \textbf{\en{Loss}} & \textbf{\en{Accuracy}} & \textbf{\en{Precision}} & \textbf{\en{Recall}} & \textbf{\en{F1}} \\
+        \hline
+        \en{FedAdam} & \(0.8\) & \(20\) & 0.4678 & 0.8634 & 0.8103 & 0.7817 & 0.7944 \\
+        \hline
+        \en{FedAdam} & \(100\) & \(100\) & 0.5339 & 0.8438 & 0.7774 & 0.8320 & 0.7970 \\
+        \hline
+        \en{FedAvg} & \(0.8\) & \(27\) & 0.4787 & 0.8737 & 0.8215 & 0.8090 & 0.8150 \\
+        \hline
+        \en{FedAvg} & \(100\) & \(100\) & 0.5165 & 0.8193 & 0.7510 & 0.8093 & 0.7696 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \textbf{\en{Accuracy}}\\[0.1cm]
+        \includegraphics[width=\textwidth]{final_experiments/clients_4/plots/accuracy.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \textbf{\en{F1-score}}\\[0.1cm]
+        \includegraphics[width=\textwidth]{final_experiments/clients_4/plots/f1.png}
+    \end{minipage}
+    \caption{Εξέλιξη των \en{accuracy} και \en{F1-score} στο σύνολο επικύρωσης για τα πειράματα με 4 \en{clients}.}
+    \label{fig:fl_4clients_accuracy_f1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \textbf{\en{Precision}}\\[0.1cm]
+        \includegraphics[width=\textwidth]{final_experiments/clients_4/plots/precision.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \textbf{\en{Recall}}\\[0.1cm]
+        \includegraphics[width=\textwidth]{final_experiments/clients_4/plots/recall.png}
+    \end{minipage}
+    \caption{Εξέλιξη των \en{precision} και \en{recall} στο σύνολο επικύρωσης για τα πειράματα με 4 \en{clients}.}
+    \label{fig:fl_4clients_precision_recall}
+\end{figure}
+
+Στον 100ό γύρο εφαρμόστηκε \en{threshold tuning} στο σύνολο επικύρωσης και το επιλεγμένο κατώφλι εφαρμόστηκε στο σύνολο ελέγχου. Τα τελικά αποτελέσματα ελέγχου παρουσιάζονται στον Πίνακα~\ref{tab:fl_4clients_test_results}. Η καλύτερη τελική επίδοση στο σύνολο ελέγχου προέκυψε με \en{FedAdam} και \(\alpha=100\), με \en{accuracy} \(0.8776\) και \en{F1-score} \(0.8245\). Η ίδια ρύθμιση πέτυχε και την υψηλότερη τιμή \en{precision}, \(0.8236\), ενώ η μεγαλύτερη τιμή \en{recall}, \(0.8258\), παρατηρήθηκε με \en{FedAdam} και \(\alpha=0.8\).
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{Τελικές μετρικές στο σύνολο ελέγχου μετά από \en{threshold tuning} για τα πειράματα με 4 \en{clients}.}
+    \label{tab:fl_4clients_test_results}
+    \begin{tabular}{|l|c|c|c|c|c|c|}
+        \hline
+        \textbf{Στρατηγική} & \textbf{\(\alpha\)} & \textbf{\en{Threshold}} & \textbf{\en{Accuracy}} & \textbf{\en{Precision}} & \textbf{\en{Recall}} & \textbf{\en{F1}} \\
+        \hline
+        \en{FedAdam} & \(0.8\) & 0.295 & 0.8743 & 0.8177 & 0.8258 & 0.8216 \\
+        \hline
+        \en{FedAdam} & \(100\) & 0.560 & 0.8776 & 0.8236 & 0.8253 & 0.8245 \\
+        \hline
+        \en{FedAvg} & \(0.8\) & 0.360 & 0.8738 & 0.8177 & 0.8220 & 0.8198 \\
+        \hline
+        \en{FedAvg} & \(100\) & 0.595 & 0.8721 & 0.8181 & 0.8097 & 0.8138 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Συνολικά, τα πειράματα με 4 \en{clients} οδηγούν σε τελικές τιμές \en{F1-score} στο σύνολο ελέγχου από \(0.8138\) έως \(0.8245\). Η \en{FedAdam} εμφανίζει την καλύτερη συνολική συμπεριφορά σε αυτή τη ρύθμιση, ειδικά για \(\alpha=100\). Σε σύγκριση με τα πειράματα των 2 \en{clients}, η καλύτερη τιμή \en{F1-score} αυξάνεται ελαφρά από \(0.8201\) σε \(0.8245\), χωρίς όμως να προσεγγίζει την επίδοση της κεντρικής εκπαίδευσης.
+
+\subsection{Πειράματα με 8 \en{clients}}
+
+Στην τρίτη ομάδα ομοσπονδιακών πειραμάτων εξετάστηκε η περίπτωση των 8 \en{clients}. Όπως και στις προηγούμενες περιπτώσεις, χρησιμοποιήθηκαν δύο τιμές της παραμέτρου \(\alpha\) του \en{Dirichlet partitioning}, \(\alpha=0.8\) και \(\alpha=100\), και συγκρίθηκαν οι στρατηγικές \en{FedAvg} και \en{FedAdam}. Οι βασικές ρυθμίσεις των πειραμάτων παρουσιάζονται στον Πίνακα~\ref{tab:fl_8clients_params}.
+
+\begin{table}[H]
+    \centering
+    \caption{Βασικές ρυθμίσεις για τα ομοσπονδιακά πειράματα με 8 \en{clients}.}
+    \label{tab:fl_8clients_params}
+    \begin{tabular}{|l|c|}
+        \hline
+        \textbf{Παράμετρος} & \textbf{Τιμή} \\
+        \hline
+        \en{Model} & \en{bert-base-uncased} \\
+        \hline
+        Πλήθος \en{clients} & \(8\) \\
+        \hline
+        Γύροι ομοσπονδιακής εκπαίδευσης & \(150\) \\
+        \hline
+        Τοπικές εποχές ανά γύρο & \(2\) \\
+        \hline
+        \en{Learning rate} & \(5\cdot10^{-4}\) \\
+        \hline
+        \en{Train batch size} & \(32\) \\
+        \hline
+        \en{Gradient accumulation steps} & \(2\) \\
+        \hline
+        \en{LoRA rank} & \(16\) \\
+        \hline
+        \en{LoRA alpha} & \(32\) \\
+        \hline
+        Μήκος ακολουθίας & \(512\) \\
+        \hline
+        \en{Threshold tuning} & Ναι \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Η εξέλιξη των μετρικών στο σύνολο επικύρωσης παρουσιάζεται στα Σχήματα~\ref{fig:fl_8clients_accuracy_f1} και~\ref{fig:fl_8clients_precision_recall}. Όπως και στην περίπτωση των 4 \en{clients}, η καλύτερη τιμή \en{F1-score} δεν εμφανίζεται πάντα στον τελευταίο γύρο. Για αυτόν τον λόγο, στον Πίνακα~\ref{tab:fl_8clients_best_eval_results} παρουσιάζεται ο γύρος με το καλύτερο \en{F1-score} για κάθε ρύθμιση.
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{Καλύτερες μετρικές επικύρωσης για τα πειράματα με 8 \en{clients}.}
+    \label{tab:fl_8clients_best_eval_results}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Στρατηγική} & \textbf{\(\alpha\)} & \textbf{Γύρος} & \textbf{\en{Loss}} & \textbf{\en{Accuracy}} & \textbf{\en{Precision}} & \textbf{\en{Recall}} & \textbf{\en{F1}} \\
+        \hline
+        \en{FedAdam} & \(0.8\) & \(20\) & 0.5017 & 0.8628 & 0.8025 & 0.8046 & 0.8036 \\
+        \hline
+        \en{FedAdam} & \(100\) & \(150\) & 0.3786 & 0.8715 & 0.8323 & 0.7774 & 0.7995 \\
+        \hline
+        \en{FedAvg} & \(0.8\) & \(146\) & 0.5057 & 0.8029 & 0.7297 & 0.7781 & 0.7458 \\
+        \hline
+        \en{FedAvg} & \(100\) & \(29\) & 0.4830 & 0.8748 & 0.8241 & 0.8080 & 0.8156 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \textbf{\en{Accuracy}}\\[0.1cm]
+        \includegraphics[width=\textwidth]{final_experiments/clients_8/plots/accuracy.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \textbf{\en{F1-score}}\\[0.1cm]
+        \includegraphics[width=\textwidth]{final_experiments/clients_8/plots/f1.png}
+    \end{minipage}
+    \caption{Εξέλιξη των \en{accuracy} και \en{F1-score} στο σύνολο επικύρωσης για τα πειράματα με 8 \en{clients}.}
+    \label{fig:fl_8clients_accuracy_f1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \textbf{\en{Precision}}\\[0.1cm]
+        \includegraphics[width=\textwidth]{final_experiments/clients_8/plots/precision.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \textbf{\en{Recall}}\\[0.1cm]
+        \includegraphics[width=\textwidth]{final_experiments/clients_8/plots/recall.png}
+    \end{minipage}
+    \caption{Εξέλιξη των \en{precision} και \en{recall} στο σύνολο επικύρωσης για τα πειράματα με 8 \en{clients}.}
+    \label{fig:fl_8clients_precision_recall}
+\end{figure}
+
+Στον 150ό γύρο εφαρμόστηκε \en{threshold tuning} στο σύνολο επικύρωσης και το επιλεγμένο κατώφλι εφαρμόστηκε στο σύνολο ελέγχου. Τα τελικά αποτελέσματα ελέγχου παρουσιάζονται στον Πίνακα~\ref{tab:fl_8clients_test_results}. Η καλύτερη τελική επίδοση στο σύνολο ελέγχου προέκυψε με \en{FedAdam} και \(\alpha=100\), με \en{accuracy} \(0.8732\) και \en{F1-score} \(0.8222\). Η υψηλότερη τιμή \en{precision}, \(0.8252\), παρατηρήθηκε με \en{FedAvg} και \(\alpha=100\), ενώ η μεγαλύτερη τιμή \en{recall}, \(0.8303\), παρατηρήθηκε με \en{FedAdam} και \(\alpha=100\).
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{Τελικές μετρικές στο σύνολο ελέγχου μετά από \en{threshold tuning} για τα πειράματα με 8 \en{clients}.}
+    \label{tab:fl_8clients_test_results}
+    \begin{tabular}{|l|c|c|c|c|c|c|}
+        \hline
+        \textbf{Στρατηγική} & \textbf{\(\alpha\)} & \textbf{\en{Threshold}} & \textbf{\en{Accuracy}} & \textbf{\en{Precision}} & \textbf{\en{Recall}} & \textbf{\en{F1}} \\
+        \hline
+        \en{FedAdam} & \(0.8\) & 0.275 & 0.8743 & 0.8179 & 0.8249 & 0.8213 \\
+        \hline
+        \en{FedAdam} & \(100\) & 0.300 & 0.8732 & 0.8150 & 0.8303 & 0.8222 \\
+        \hline
+        \en{FedAvg} & \(0.8\) & 0.610 & 0.8656 & 0.8109 & 0.7926 & 0.8011 \\
+        \hline
+        \en{FedAvg} & \(100\) & 0.415 & 0.8770 & 0.8252 & 0.8172 & 0.8211 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Συνολικά, τα πειράματα με 8 \en{clients} οδηγούν σε τελικές τιμές \en{F1-score} στο σύνολο ελέγχου από \(0.8011\) έως \(0.8222\). Η καλύτερη επίδοση είναι πολύ κοντά στην αντίστοιχη των 4 \en{clients}, αλλά ελαφρώς χαμηλότερη από το \(0.8245\) που επιτεύχθηκε σε εκείνη τη ρύθμιση. Η αύξηση του πλήθους των \en{clients} δεν βελτιώνει περαιτέρω τη συνολική απόδοση, γεγονός που δείχνει ότι ο μεγαλύτερος κατακερματισμός των δεδομένων μπορεί να περιορίσει το όφελος της ομοσπονδιακής εκπαίδευσης.
