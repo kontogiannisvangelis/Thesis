@@ -60,29 +60,29 @@
     \centering
     \caption{Αποτελέσματα επικύρωσης ανά εποχή για το τελικό κεντρικό πείραμα.}
     \label{tab:central_validation_results}
-    \begin{tabular}{|c|c|c|c|c|c|}
+    \begin{tabular}{|c|c|c|c|c|}
         \hline
-        \textbf{Εποχή} & \textbf{\en{Loss}} & \textbf{\en{Accuracy}} & \textbf{\en{Precision}} & \textbf{\en{Recall}} & \textbf{\en{F1}} \\
+        \textbf{Εποχή} & \textbf{\en{Accuracy}} & \textbf{\en{Precision}} & \textbf{\en{Recall}} & \textbf{\en{F1}} \\
         \hline
-        1 & 0.2790 & 0.9401 & 0.9163 & 0.9105 & 0.9134 \\
+        1 & 0.9401 & 0.9163 & 0.9105 & 0.9134 \\
         \hline
-        2 & 0.2398 & 0.9592 & 0.9564 & 0.9245 & 0.9392 \\
+        2 & 0.9592 & 0.9564 & 0.9245 & 0.9392 \\
         \hline
-        3 & 0.1878 & 0.9630 & 0.9628 & 0.9296 & 0.9449 \\
+        3 & 0.9630 & 0.9628 & 0.9296 & 0.9449 \\
         \hline
-        4 & 0.1984 & 0.9641 & 0.9644 & 0.9311 & 0.9465 \\
+        4 & 0.9641 & 0.9644 & 0.9311 & 0.9465 \\
         \hline
-        5 & 0.2201 & 0.9614 & 0.9665 & 0.9216 & 0.9417 \\
+        5 & 0.9614 & 0.9665 & 0.9216 & 0.9417 \\
         \hline
-        6 & 0.2009 & 0.9630 & 0.9686 & 0.9244 & 0.9442 \\
+        6 & 0.9630 & 0.9686 & 0.9244 & 0.9442 \\
         \hline
-        7 & 0.2352 & 0.9603 & 0.9678 & 0.9174 & 0.9397 \\
+        7 & 0.9603 & 0.9678 & 0.9174 & 0.9397 \\
         \hline
-        8 & 0.1748 & 0.9662 & 0.9707 & 0.9317 & 0.9494 \\
+        8 & 0.9662 & 0.9707 & 0.9317 & 0.9494 \\
         \hline
-        9 & 0.1821 & 0.9668 & 0.9721 & 0.9320 & 0.9502 \\
+        9 & 0.9668 & 0.9721 & 0.9320 & 0.9502 \\
         \hline
-        10 & 0.1856 & 0.9668 & 0.9721 & 0.9320 & 0.9502 \\
+        10 & 0.9668 & 0.9721 & 0.9320 & 0.9502 \\
         \hline
     \end{tabular}
 \end{table}
@@ -96,8 +96,6 @@
     \begin{tabular}{|l|c|}
         \hline
         \textbf{Μετρική} & \textbf{Τιμή} \\
-        \hline
-        \en{Test loss} & 0.1884 \\
         \hline
         \en{Accuracy} & 0.9663 \\
         \hline
@@ -158,17 +156,17 @@
     \small
     \caption{Μετρικές επικύρωσης στον 40ό γύρο για τα πειράματα με 2 \en{clients}.}
     \label{tab:fl_2clients_eval_results}
-    \begin{tabular}{|l|c|c|c|c|c|c|}
+    \begin{tabular}{|l|c|c|c|c|c|}
         \hline
-        \textbf{Στρατηγική} & \textbf{\(\alpha\)} & \textbf{\en{Loss}} & \textbf{\en{Accuracy}} & \textbf{\en{Precision}} & \textbf{\en{Recall}} & \textbf{\en{F1}} \\
+        \textbf{Στρατηγική} & \textbf{\(\alpha\)} & \textbf{\en{Accuracy}} & \textbf{\en{Precision}} & \textbf{\en{Recall}} & \textbf{\en{F1}} \\
         \hline
-        \en{FedAdam} & \(0.8\) & 0.4829 & 0.8764 & 0.8242 & 0.8168 & 0.8204 \\
+        \en{FedAdam} & \(0.8\) & 0.8764 & 0.8242 & 0.8168 & 0.8204 \\
         \hline
-        \en{FedAdam} & \(100\) & 0.4780 & 0.8710 & 0.8147 & 0.8142 & 0.8145 \\
+        \en{FedAdam} & \(100\) & 0.8710 & 0.8147 & 0.8142 & 0.8145 \\
         \hline
-        \en{FedAvg} & \(0.8\) & 0.4585 & 0.8792 & 0.8296 & 0.8169 & 0.8229 \\
+        \en{FedAvg} & \(0.8\) & 0.8792 & 0.8296 & 0.8169 & 0.8229 \\
         \hline
-        \en{FedAvg} & \(100\) & 0.4527 & 0.8781 & 0.8280 & 0.8153 & 0.8214 \\
+        \en{FedAvg} & \(100\) & 0.8781 & 0.8280 & 0.8153 & 0.8214 \\
         \hline
     \end{tabular}
 \end{table}
@@ -275,17 +273,17 @@
     \small
     \caption{Καλύτερες μετρικές επικύρωσης για τα πειράματα με 4 \en{clients}.}
     \label{tab:fl_4clients_best_eval_results}
-    \begin{tabular}{|l|c|c|c|c|c|c|c|}
+    \begin{tabular}{|l|c|c|c|c|c|c|}
         \hline
-        \textbf{Στρατηγική} & \textbf{\(\alpha\)} & \textbf{Γύρος} & \textbf{\en{Loss}} & \textbf{\en{Accuracy}} & \textbf{\en{Precision}} & \textbf{\en{Recall}} & \textbf{\en{F1}} \\
+        \textbf{Στρατηγική} & \textbf{\(\alpha\)} & \textbf{Γύρος} & \textbf{\en{Accuracy}} & \textbf{\en{Precision}} & \textbf{\en{Recall}} & \textbf{\en{F1}} \\
         \hline
-        \en{FedAdam} & \(0.8\) & \(20\) & 0.4678 & 0.8634 & 0.8103 & 0.7817 & 0.7944 \\
+        \en{FedAdam} & \(0.8\) & \(20\) & 0.8634 & 0.8103 & 0.7817 & 0.7944 \\
         \hline
-        \en{FedAdam} & \(100\) & \(100\) & 0.5339 & 0.8438 & 0.7774 & 0.8320 & 0.7970 \\
+        \en{FedAdam} & \(100\) & \(100\) & 0.8438 & 0.7774 & 0.8320 & 0.7970 \\
         \hline
-        \en{FedAvg} & \(0.8\) & \(27\) & 0.4787 & 0.8737 & 0.8215 & 0.8090 & 0.8150 \\
+        \en{FedAvg} & \(0.8\) & \(27\) & 0.8737 & 0.8215 & 0.8090 & 0.8150 \\
         \hline
-        \en{FedAvg} & \(100\) & \(100\) & 0.5165 & 0.8193 & 0.7510 & 0.8093 & 0.7696 \\
+        \en{FedAvg} & \(100\) & \(100\) & 0.8193 & 0.7510 & 0.8093 & 0.7696 \\
         \hline
     \end{tabular}
 \end{table}
@@ -392,17 +390,17 @@
     \small
     \caption{Καλύτερες μετρικές επικύρωσης για τα πειράματα με 8 \en{clients}.}
     \label{tab:fl_8clients_best_eval_results}
-    \begin{tabular}{|l|c|c|c|c|c|c|c|}
+    \begin{tabular}{|l|c|c|c|c|c|c|}
         \hline
-        \textbf{Στρατηγική} & \textbf{\(\alpha\)} & \textbf{Γύρος} & \textbf{\en{Loss}} & \textbf{\en{Accuracy}} & \textbf{\en{Precision}} & \textbf{\en{Recall}} & \textbf{\en{F1}} \\
+        \textbf{Στρατηγική} & \textbf{\(\alpha\)} & \textbf{Γύρος} & \textbf{\en{Accuracy}} & \textbf{\en{Precision}} & \textbf{\en{Recall}} & \textbf{\en{F1}} \\
         \hline
-        \en{FedAdam} & \(0.8\) & \(20\) & 0.5017 & 0.8628 & 0.8025 & 0.8046 & 0.8036 \\
+        \en{FedAdam} & \(0.8\) & \(20\) & 0.8628 & 0.8025 & 0.8046 & 0.8036 \\
         \hline
-        \en{FedAdam} & \(100\) & \(150\) & 0.3786 & 0.8715 & 0.8323 & 0.7774 & 0.7995 \\
+        \en{FedAdam} & \(100\) & \(150\) & 0.8715 & 0.8323 & 0.7774 & 0.7995 \\
         \hline
-        \en{FedAvg} & \(0.8\) & \(146\) & 0.5057 & 0.8029 & 0.7297 & 0.7781 & 0.7458 \\
+        \en{FedAvg} & \(0.8\) & \(146\) & 0.8029 & 0.7297 & 0.7781 & 0.7458 \\
         \hline
-        \en{FedAvg} & \(100\) & \(29\) & 0.4830 & 0.8748 & 0.8241 & 0.8080 & 0.8156 \\
+        \en{FedAvg} & \(100\) & \(29\) & 0.8748 & 0.8241 & 0.8080 & 0.8156 \\
         \hline
     \end{tabular}
 \end{table}
