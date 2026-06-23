@@ -1,48 +1,32 @@
 \setcounter{page}{5}
 \begin{abstract}
-Η αυξανόμενη πολυπλοκότητα των δικτύων \en{5G} και των αναδυόμενων δικτύων \en{6G} δημιουργεί σημαντικές
-προκλήσεις στον τομέα της κυβερνοασφάλειας, ιδιαίτερα στην ανίχνευση κακόβουλων δραστηριοτήτων 
-μέσα σε μεγάλους όγκους καταγραφών δικτύου (\en{logs}). Η παρούσα διπλωματική εργασία διερευνά τη χρήση 
-Μεγάλων Γλωσσικών Μοντέλων (\en{Large Language Models} – \en{LLMs}) για την αυτοματοποιημένη ανάλυση καταγραφών 
-και την ταξινόμηση συμβάντων δικτύου σε καλοήθη και κακόβουλα. Για την αποδοτική και διατηρούσα την 
-ιδιωτικότητα εκπαίδευση σε κατανεμημένα περιβάλλοντα, υιοθετείται μια προσέγγιση ομόσπονδης 
-μάθησης (\en{Federated Learning}). Συγκεκριμένα, χρησιμοποιείται η τεχνική \en{Low-Rank Adaptation} (\en{LoRA}) 
-για την προσαρμογή (\en{fine-tuning}) των \en{LLMs}, μειώνοντας σημαντικά το υπολογιστικό και επικοινωνιακό κόστος 
-που απαιτείται από την πλήρη εκπαίδευση των μοντέλων. Η υλοποίηση πραγματοποιείται με τη χρήση του πλαισίου 
-ομόσπονδης μάθησης \en{Flower AI}, το οποίο συντονίζει τη συνεργατική εκπαίδευση μεταξύ πολλαπλών κόμβων χωρίς 
-την ανάγκη κεντρικής κοινοποίησης δεδομένων. Η προτεινόμενη προσέγγιση αξιολογεί την αποτελεσματικότητα της ομόσπονδης προσαρμογής 
-μοντέλων για την ανάλυση καταγραφών κυβερνοασφάλειας σε δίκτυα επόμενης γενιάς. Τα αποτελέσματα δείχνουν ότι ο συνδυασμός της 
-ομόσπονδης μάθησης με τεχνικές αποδοτικής προσαρμογής παραμέτρων μπορεί να βελτιώσει την ανίχνευση κακόβουλων 
-δραστηριοτήτων, διατηρώντας παράλληλα την επεκτασιμότητα και την ιδιωτικότητα των δεδομένων σε κατανεμημένα περιβάλλοντα \en{5G/6G}.
+
+Τα σύγχρονα δίκτυα \en{5G} και τα αναδυόμενα δίκτυα \en{6G} βασίζονται σε κατανεμημένες, εικονικοποιημένες και έντονα βασισμένες σε λογισμικό υποδομές. Η εξέλιξη αυτή αυξάνει τις δυνατότητες των τηλεπικοινωνιακών συστημάτων, αλλά ταυτόχρονα διευρύνει την επιφάνεια επίθεσης και καθιστά αναγκαία την ανάπτυξη αποδοτικών μηχανισμών ανίχνευσης ανωμαλιών και κυβερνοεπιθέσεων. Τα αρχεία καταγραφής αποτελούν βασική πηγή πληροφορίας για την ασφάλεια τέτοιων συστημάτων, καθώς αποτυπώνουν τη συμπεριφορά υπηρεσιών, κόμβων και εφαρμογών. Στην πράξη, όμως, τα δεδομένα αυτά παράγονται συχνά σε διαφορετικούς οργανισμούς, παρόχους ή μέρη του δικτύου και δεν είναι πάντα εφικτό ή επιθυμητό να συγκεντρωθούν σε ένα κεντρικό σημείο, λόγω περιορισμών ιδιωτικότητας, ιδιοκτησίας δεδομένων και κόστους μεταφοράς.
+
+Η παρούσα διπλωματική εργασία εστιάζει στην ομοσπονδιακή ανίχνευση ανωμαλιών σε ακολουθίες καταγραφών, με στόχο την εκπαίδευση ενός κοινού μοντέλου χωρίς μεταφορά των αρχικών δεδομένων στον κεντρικό διακομιστή. Το πρόβλημα διατυπώνεται ως δυαδική ταξινόμηση φυσιολογικής και ανώμαλης συμπεριφοράς πάνω στο σύνολο δεδομένων \en{Loghub HDFS}. Ως βασικό μοντέλο χρησιμοποιείται το προεκπαιδευμένο \en{BERT}, το οποίο προσαρμόζεται με τη μέθοδο \en{Low-Rank Adaptation (LoRA)}. Η επιλογή αυτή είναι ιδιαίτερα κατάλληλη για ομοσπονδιακό περιβάλλον, επειδή οι \en{clients} εκπαιδεύουν και αποστέλλουν μόνο τις πρόσθετες παραμέτρους \en{LoRA}, περιορίζοντας τόσο το υπολογιστικό όσο και το επικοινωνιακό κόστος σε σχέση με την πλήρη προσαρμογή του μοντέλου.
+
+Η ομοσπονδιακή υλοποίηση βασίζεται στο \en{Flower} και αξιολογεί διαφορετικά σενάρια κατανομής των δεδομένων εκπαίδευσης σε 2, 4 και 8 \en{clients}. Για την προσομοίωση ρεαλιστικών κατανεμημένων συνθηκών χρησιμοποιείται \en{Dirichlet partitioning} με δύο τιμές της παραμέτρου \(\alpha\): \(\alpha=0.8\), που αντιστοιχεί σε πιο ανομοιογενή κατανομή, και \(\alpha=100\), που προσεγγίζει περισσότερο την ομοιόμορφη περίπτωση. Επιπλέον, συγκρίνονται οι στρατηγικές συνάθροισης \en{FedAvg} και \en{FedAdam}, ώστε να εξεταστεί πώς επηρεάζεται η σύγκλιση και η τελική απόδοση από τον τρόπο συνδυασμού των τοπικών ενημερώσεων. Για δίκαιη αποτίμηση, τα ομοσπονδιακά αποτελέσματα συγκρίνονται με αντίστοιχο κεντρικοποιημένο μοντέλο αναφοράς.
+
+Τα αποτελέσματα αναδεικνύουν τον βασικό συμβιβασμό της ομοσπονδιακής προσέγγισης. Το κεντρικοποιημένο μοντέλο επιτυγχάνει \en{F1-score} \(0.9494\), λειτουργώντας ως άνω σημείο αναφοράς όταν η συγκέντρωση των δεδομένων είναι εφικτή. Στα ομοσπονδιακά πειράματα, η καλύτερη επίδοση προκύπτει με 4 \en{clients}, στρατηγική \en{FedAdam} και \(\alpha=100\), φτάνοντας \en{F1-score} \(0.8245\), ενώ οι περισσότερες ομοσπονδιακές εκτελέσεις συγκεντρώνονται κοντά στο \(0.82\). Η επίδοση αυτή είναι χαμηλότερη από την κεντρική εκπαίδευση, αλλά επιτυγχάνεται χωρίς κοινοποίηση των τοπικών δεδομένων, με ανταλλαγή μόνο των παραμέτρων προσαρμογής. Συνεπώς, η εργασία δείχνει ότι ο συνδυασμός Ομοσπονδιακής Μάθησης και \en{LoRA} αποτελεί μια λειτουργική και πρακτική κατεύθυνση για ανίχνευση ανωμαλιών σε κατανεμημένα περιβάλλοντα κυβερνοασφάλειας, όπου η ιδιωτικότητα και η τοπικότητα των δεδομένων έχουν κεντρική σημασία.
 
    \begin{keywords}
-   Ομόσπονδη Μάθηση, Μεγάλα Γλωσσικά Μοντέλα, Προσαρμογή \en{LoRA} (\en{LoRA Fine-Tuning}), Ανάλυση Καταγραφών Δικτύου, Κυβερνοασφάλεια, Δίκτυα \en{5G/6G}, \en{Flower AI}
+   ανίχνευση ανωμαλιών, αρχεία καταγραφής, ομοσπονδιακή μάθηση, μεγάλα γλωσσικά μοντέλα, \en{LoRA}, \en{BERT}, \en{HDFS}, κυβερνοασφάλεια, δίκτυα \en{5G}/\en{6G}
    \end{keywords}
 \end{abstract}
 
 
 
 \begin{abstracteng}
-\tl{
-   The increasing complexity of 5G and emerging 6G networks introduces
-   significant cybersecurity challenges, particularly in the detection 
-   of malicious activities within large volumes of network logs. This thesis 
-   investigates the use of Large Language Models (LLMs) for automated log analysis 
-   and the classification of benign and malicious network events. To enable efficient
-   and privacy-preserving training across distributed environments, a federated learning 
-   approach is adopted. Specifically, Low-Rank Adaptation (LoRA) is used to fine-tune 
-   LLMs while significantly reducing the computational and communication overhead typically 
-   associated with full model training. The implementation is carried out using the Flower AI 
-   federated learning framework, which coordinates collaborative training among multiple clients 
-   without requiring centralized data sharing. The proposed approach evaluates the effectiveness 
-   of federated fine-tuning for cybersecurity log analysis in next-generation mobile networks. 
-   The results demonstrate that combining federated learning with parameter-efficient fine-tuning 
-   techniques can improve malicious activity detection while maintaining scalability and data privacy 
-   in distributed 5G/6G environments.
-   }
+\tl{Modern 5G networks and emerging 6G networks rely on distributed, virtualized and heavily software-based infrastructures. This evolution increases the capabilities of telecommunication systems, but at the same time expands the attack surface and makes the development of efficient mechanisms for detecting anomalies and cyberattacks necessary. Logs constitute a basic source of information for the security of such systems, as they capture the behavior of services, nodes and applications. In practice, however, these data are often generated in different organizations, providers or parts of the network and it is not always feasible or desirable to gather them in a central point, due to privacy, data ownership and transfer cost constraints.}
+
+\tl{This diploma thesis focuses on federated anomaly detection in log sequences, with the aim of training a common model without transferring the original data to the central server. The problem is formulated as binary classification of normal and anomalous behavior on the Loghub HDFS dataset. The pretrained BERT model is used as the base model, which is adapted with the Low-Rank Adaptation (LoRA) method. This choice is particularly suitable for a federated environment, because the clients train and send only the additional LoRA parameters, limiting both the computational and communication cost in relation to full adaptation of the model.}
+
+\tl{The federated implementation is based on Flower and evaluates different scenarios for the distribution of the training data across 2, 4 and 8 clients. To simulate realistic distributed conditions, Dirichlet partitioning is used with two values of the parameter \(\alpha\): \(\alpha=0.8\), which corresponds to a more heterogeneous distribution, and \(\alpha=100\), which more closely approximates the uniform case. In addition, the aggregation strategies FedAvg and FedAdam are compared, in order to examine how convergence and final performance are affected by the way local updates are combined. For a fair assessment, the federated results are compared with a corresponding centralized reference model.}
+
+\tl{The results highlight the basic trade-off of the federated approach. The centralized model achieves an F1-score of \(0.9494\), serving as an upper reference point when data centralization is feasible. In the federated experiments, the best performance is obtained with 4 clients, the FedAdam strategy and \(\alpha=100\), reaching an F1-score of \(0.8245\), while most federated runs are concentrated near \(0.82\). This performance is lower than that of centralized training, but it is achieved without sharing the local data, with only the adaptation parameters being exchanged. Therefore, the thesis shows that the combination of Federated Learning and LoRA constitutes a functional and practical direction for anomaly detection in distributed cybersecurity environments, where privacy and data locality are of central importance.}
 
    \begin{keywordseng}
-    \tl{Federated Learning, Large Language Models, LoRA Fine-Tuning, Network Log Analysis, Cybersecurity, 5G/6G Networks, Flower AI}
+    \tl{anomaly detection, logs, federated learning, large language models, LoRA, BERT, HDFS, cybersecurity, 5G/6G networks}
    \end{keywordseng}
 
 \end{abstracteng}
