@@ -42,9 +42,6 @@ _minted*
 *.snm
 *.vrb
 
-# PDF output (optional — keep if you want to version PDFs)
-*.pdf
-
 # temporary files
 *.tmp
 *.bak
