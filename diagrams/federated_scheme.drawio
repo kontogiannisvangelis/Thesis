@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Page-1" id="FAhzUH1zAFBwU46ECzxk">
-    <mxGraphModel dx="1417" dy="786" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="911" dy="493" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -13,7 +13,7 @@
         <mxCell id="0rYZRTswMWvSv6utyayp-46" edge="1" parent="1" source="0rYZRTswMWvSv6utyayp-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="0rYZRTswMWvSv6utyayp-7">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="0rYZRTswMWvSv6utyayp-49" edge="1" parent="1" source="0rYZRTswMWvSv6utyayp-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="0rYZRTswMWvSv6utyayp-29">
+        <mxCell id="0rYZRTswMWvSv6utyayp-49" edge="1" parent="1" source="0rYZRTswMWvSv6utyayp-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" target="0rYZRTswMWvSv6utyayp-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="0rYZRTswMWvSv6utyayp-1" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" value="&lt;h3&gt;Central Server&lt;/h3&gt;&lt;div&gt;W_lora_grobal = Aggregate_function(W_lora_1, ...,W_lora_N)&lt;/div&gt;" vertex="1">
