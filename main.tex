@@ -125,7 +125,7 @@
 %% -------------------------------------------------------------------
 %% ΤΙΤΛΟΣ ΕΠΙΒΛΕΠΟΝΤΑ ΚΑΘΗΓΗΤΗ
 %
-	\supervisorTitle{Καθηγητής}
+	\supervisorTitle{Καθηγητής ΕΜΠ}
 %
 %% -------------------------------------------------------------------
 %% ΕΠΙΒΛΕΠΩΝ/ΕΠΙΒΛΕΠΟΥΣΑ
@@ -167,7 +167,7 @@
 %% -------------------------------------------------------------------
 %% ΤΙΤΛΟΣ 1ου ΕΞΕΤΑΣΤΗ
 %
-	\firstExaminerTitle{Ομότιμος Καθηγητής}
+	\firstExaminerTitle{Ομότιμος Καθηγητής ΕΜΠ}
 %
 %% -------------------------------------------------------------------
 %% ΟΝΟΜΑΤΕΠΩΝΥΜΟ 2ου ΕΞΕΤΑΣΤΗ
@@ -177,7 +177,7 @@
 %% -------------------------------------------------------------------
 %% ΤΙΤΛΟΣ 2ου ΕΞΕΤΑΣΤΗ
 %
-	\secondExaminerTitle{Επίκουρος Καθηγητής}
+	\secondExaminerTitle{Επίκουρος Καθηγητής ΕΜΠ}
 %%
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -231,7 +231,7 @@
 %%              };
 %%          }
 %%
-     \coverpageimage{0.2}{figures/image.png}
+    %  \coverpageimage{0.2}{figures/image.png}
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -250,15 +250,22 @@
 \let\origcleardoublepage\cleardoublepage
 % Redefine to ignore blank pages temporarily
 \renewcommand{\cleardoublepage}{\clearpage}
+\newcommand{\frontmatterblankpage}{%
+  \clearpage
+  \thispagestyle{empty}%
+  \mbox{}%
+  \clearpage
+}
 
-% Include front matter without forced blank pages
+% Include front matter with explicit blank separator pages
 \beginfrontmatter
 
 \setcounter{page}{5}
 \pagenumbering{arabic}
 \include{front_matter/abstract}
+\frontmatterblankpage
 \include{front_matter/acknowledgements}
-
+\frontmatterblankpage
 
 \tableofcontents
 \listoffigures

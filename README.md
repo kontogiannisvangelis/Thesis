@@ -23,10 +23,22 @@ The generated PDF is written to:
 build/main.pdf
 ```
 
+## Ready-to-Use Exports
+
+Ready-to-use PDF exports of the diploma thesis and its presentation are
+available in the [`export/`](export/) folder.
+
+- [Diploma thesis](export/diploma-thesis.pdf)
+- [Thesis presentation](export/diploma-thesis-presentation.pdf)
+
 ## Code Repositories
 
 - [hdfs_anomaly_detection](https://github.com/kontogiannisvangelis/hdfs_anomaly_detection)
 - [flower_hdfs_anomaly_detection](https://github.com/kontogiannisvangelis/flower_hdfs_anomaly_detection)
+
+## Template
+
+This diploma thesis uses the [NTUA ECE Thesis Template](https://github.com/estamos/NTUA-ECE-Thesis-Template).
 
 ## Notes
 

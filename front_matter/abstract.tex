@@ -1,9 +1,7 @@
 \setcounter{page}{5}
-\begin{abstract}
+\abstract
 
-Τα σύγχρονα δίκτυα \en{5G} και τα αναδυόμενα δίκτυα \en{6G} βασίζονται σε κατανεμημένες, εικονικοποιημένες και έντονα βασισμένες σε λογισμικό υποδομές. Η εξέλιξη αυτή αυξάνει τις δυνατότητες των τηλεπικοινωνιακών συστημάτων, αλλά ταυτόχρονα διευρύνει την επιφάνεια επίθεσης και καθιστά αναγκαία την ανάπτυξη αποδοτικών μηχανισμών ανίχνευσης ανωμαλιών και κυβερνοεπιθέσεων. Τα αρχεία καταγραφής αποτελούν βασική πηγή πληροφορίας για την ασφάλεια τέτοιων συστημάτων, καθώς αποτυπώνουν τη συμπεριφορά υπηρεσιών, κόμβων και εφαρμογών. Στην πράξη, όμως, τα δεδομένα αυτά παράγονται συχνά σε διαφορετικούς οργανισμούς, παρόχους ή μέρη του δικτύου και δεν είναι πάντα εφικτό ή επιθυμητό να συγκεντρωθούν σε ένα κεντρικό σημείο, λόγω περιορισμών ιδιωτικότητας, ιδιοκτησίας δεδομένων και κόστους μεταφοράς.
-
-Η παρούσα διπλωματική εργασία εστιάζει στην ομοσπονδιακή ανίχνευση ανωμαλιών σε ακολουθίες καταγραφών, με στόχο την εκπαίδευση ενός κοινού μοντέλου χωρίς μεταφορά των αρχικών δεδομένων στον κεντρικό διακομιστή. Το πρόβλημα διατυπώνεται ως δυαδική ταξινόμηση φυσιολογικής και ανώμαλης συμπεριφοράς πάνω στο σύνολο δεδομένων \en{Loghub HDFS}. Ως βασικό μοντέλο χρησιμοποιείται το προεκπαιδευμένο \en{BERT}, το οποίο προσαρμόζεται με τη μέθοδο \en{Low-Rank Adaptation (LoRA)}. Η επιλογή αυτή είναι ιδιαίτερα κατάλληλη για ομοσπονδιακό περιβάλλον, επειδή οι \en{clients} εκπαιδεύουν και αποστέλλουν μόνο τις πρόσθετες παραμέτρους \en{LoRA}, περιορίζοντας τόσο το υπολογιστικό όσο και το επικοινωνιακό κόστος σε σχέση με την πλήρη προσαρμογή του μοντέλου.
+Τα σύγχρονα δίκτυα \en{5G} και τα αναδυόμενα \en{6G} βασίζονται σε κατανεμημένες και εικονικοποιημένες υποδομές, γεγονός που αυξάνει τόσο τις δυνατότητές τους όσο και την επιφάνεια επίθεσης. Τα αρχεία καταγραφής αποτελούν κρίσιμη πηγή για την ανίχνευση ανωμαλιών, αλλά η κεντρική συγκέντρωσή τους συχνά περιορίζεται από ζητήματα ιδιωτικότητας, ιδιοκτησίας και κόστους. Η παρούσα εργασία εξετάζει την ομοσπονδιακή ανίχνευση ανωμαλιών στο σύνολο δεδομένων \en{Loghub HDFS}, εκπαιδεύοντας ένα κοινό μοντέλο χωρίς μεταφορά των αρχικών δεδομένων. Για τη δυαδική ταξινόμηση φυσιολογικής και ανώμαλης συμπεριφοράς χρησιμοποιείται προεκπαιδευμένο \en{BERT} με \en{Low-Rank Adaptation (LoRA)}, ώστε οι \en{clients} να ανταλλάσσουν μόνο τις πρόσθετες παραμέτρους προσαρμογής, περιορίζοντας το υπολογιστικό και επικοινωνιακό κόστος.
 
 Η ομοσπονδιακή υλοποίηση βασίζεται στο \en{Flower} και αξιολογεί διαφορετικά σενάρια κατανομής των δεδομένων εκπαίδευσης σε 2, 4 και 8 \en{clients}. Για την προσομοίωση ρεαλιστικών κατανεμημένων συνθηκών χρησιμοποιείται \en{Dirichlet partitioning} με δύο τιμές της παραμέτρου \(\alpha\): \(\alpha=0.8\), που αντιστοιχεί σε πιο ανομοιογενή κατανομή, και \(\alpha=100\), που προσεγγίζει περισσότερο την ομοιόμορφη περίπτωση. Επιπλέον, συγκρίνονται οι στρατηγικές συνάθροισης \en{FedAvg} και \en{FedAdam}, ώστε να εξεταστεί πώς επηρεάζεται η σύγκλιση και η τελική απόδοση από τον τρόπο συνδυασμού των τοπικών ενημερώσεων. Για δίκαιη αποτίμηση, τα ομοσπονδιακά αποτελέσματα συγκρίνονται με αντίστοιχο κεντρικοποιημένο μοντέλο αναφοράς.
 
@@ -12,21 +10,21 @@
    \begin{keywords}
    ανίχνευση ανωμαλιών, αρχεία καταγραφής, ομοσπονδιακή μάθηση, μεγάλα γλωσσικά μοντέλα, \en{LoRA}, \en{BERT}, \en{Loghub HDFS}, κυβερνοασφάλεια, δίκτυα \en{5G}/\en{6G}
    \end{keywords}
-\end{abstract}
 
 
+\frontmatterblankpage
 
-\begin{abstracteng}
-\tl{Modern 5G networks and emerging 6G networks rely on distributed, virtualized and heavily software-based infrastructures. This evolution increases the capabilities of telecommunication systems, but at the same time expands the attack surface and makes the development of efficient mechanisms for detecting anomalies and cyberattacks necessary. Logs constitute a basic source of information for the security of such systems, as they capture the behavior of services, nodes and applications. In practice, however, these data are often generated in different organizations, providers or parts of the network and it is not always feasible or desirable to gather them in a central point, due to privacy, data ownership and transfer cost constraints.}
-
-\tl{This diploma thesis focuses on federated anomaly detection in log sequences, with the aim of training a common model without transferring the original data to the central server. The problem is formulated as binary classification of normal and anomalous behavior on the Loghub HDFS dataset. The pretrained BERT model is used as the base model, which is adapted with the Low-Rank Adaptation (LoRA) method. This choice is particularly suitable for a federated environment, because the clients train and send only the additional LoRA parameters, limiting both the computational and communication cost in relation to full adaptation of the model.}
+\begingroup
+\let\cleardoublepage\clearpage
+\abstracteng
+\endgroup
+\tl{Modern 5G networks and emerging 6G networks rely on distributed and virtualized infrastructures, increasing both their capabilities and their attack surface. Logs constitute a critical source for anomaly detection, but their central collection is often limited by privacy, ownership and cost issues. This thesis examines federated anomaly detection on the Loghub HDFS dataset, training a common model without transferring the original data. For the binary classification of normal and anomalous behavior, a pretrained BERT model with Low-Rank Adaptation (LoRA) is used, so that clients exchange only the additional adaptation parameters, limiting computational and communication cost.}
 
 \tl{The federated implementation is based on Flower and evaluates different scenarios for the distribution of the training data across 2, 4 and 8 clients. To simulate realistic distributed conditions, Dirichlet partitioning is used with two values of the parameter \(\alpha\): \(\alpha=0.8\), which corresponds to a more heterogeneous distribution, and \(\alpha=100\), which more closely approximates the uniform case. In addition, the aggregation strategies FedAvg and FedAdam are compared, in order to examine how convergence and final performance are affected by the way local updates are combined. For a fair assessment, the federated results are compared with a corresponding centralized reference model.}
 
-\tl{The results highlight the basic trade-off of the federated approach. The centralized model achieves an F1-score of \(0.9494\), serving as an upper reference point when data centralization is feasible. In the federated experiments, the best performance is obtained with 4 clients, the FedAdam strategy and \(\alpha=100\), reaching an F1-score of \(0.8245\), while most federated runs are concentrated near \(0.82\). This performance is lower than that of centralized training, but it is achieved without sharing the local data, with only the adaptation parameters being exchanged. Therefore, the thesis shows that the combination of Federated Learning and LoRA constitutes a functional and practical direction for anomaly detection in distributed cybersecurity environments, where privacy and data locality are of central importance.}
+\tl{The results highlight the basic trade-off of the federated approach. The centralized model achieves an F1-score of \(0.9494\), serving as an upper reference point when data centralization is feasible. In the federated experiments, the best performance is obtained with 4 clients, the FedAdam strategy and \(\alpha=100\), reaching an F1-score of \(0.8245\), while most federated runs are concentrated near \(0.82\). This performance is lower than that of centralized training, but it is achieved without sharing the local data, with only the adaptation parameters being exchanged. Therefore, the thesis shows that the combination of Federated Learning and LoRA constitutes a functional and practical direction for anomaly detection in distributed cybersecurity environments, where privacy and data locality are of central importance.}\par
+\vspace{\baselineskip}
 
    \begin{keywordseng}
     \tl{anomaly detection, logs, federated learning, large language models, LoRA, BERT, Loghub HDFS, cybersecurity, 5G/6G networks}
    \end{keywordseng}
-
-\end{abstracteng}
